@@ -92,7 +92,7 @@ var DharmaGenerator = yeoman.generators.Base.extend({
       this.siteName = props.siteName;
       this.themeSlug = props.themeSlug;
       this.wpDirectory = props.wpDirectory;
-      this.themeDir = 'content/themes/' + this.themeSlug;
+      this.themeDir = 'wp-content/themes/' + this.themeSlug;
       this.dbPrefix = props.dbPrefix;
       this.dbName = props.dbName;
       this.dbUser = props.dbUser;
@@ -107,9 +107,9 @@ var DharmaGenerator = yeoman.generators.Base.extend({
   app: function() {
 
     this.mkdir('content');
-    this.mkdir('content/themes');
+    this.mkdir('wp-content/themes');
     // get this folder name from a user prompt
-    this.mkdir('content/themes/' + this.themeSlug);
+    this.mkdir('wp-content/themes/' + this.themeSlug);
     this.mkdir('content/mu-plugins');
     this.mkdir('shared/content/uploads');
     this.template(
