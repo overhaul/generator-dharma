@@ -510,7 +510,7 @@ if ( ! function_exists( 'om_fix_paragraph_nesting' ) ) {
  *
  * @since 4.2.0
  */
-if ( ! function_exists( 'om_disable_emoji' ) {
+if ( ! function_exists( 'om_disable_emoji' ) ) {
 
   function om_disable_emoji() {
 
