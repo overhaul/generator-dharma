@@ -365,7 +365,7 @@ if ( ! function_exists( 'om_img_unautop' ) ) {
 
   function om_img_unautop( $pee ) {
 
-    $pee = preg_replace( '/<p>\\s*?(<a .*?><img.*?><\\/a>|<img.*?>)?\\s*<\\/p>/s', '<figure>$1</figure>', $pee );
+    $pee = preg_replace( '/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '<figure>\1\2\3</figure>', $pee );
 
     return $pee;
 
