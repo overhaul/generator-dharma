@@ -66,6 +66,15 @@ On a Mac? Got Terminal open? Here we go:
     $ npm install -g generator-dharma
     $ yo dharma
     ```
+    
+    Or, use the latest unreleased version by cloning the repo, going to its folder and running
+    ```shell
+    $ npm link
+    ```
+    then switching to your project folder and running
+    ```shell
+    $ yo dharma
+    ```
 
     Just follow the on-screen prompts from there!
 
