@@ -5,7 +5,7 @@
  * @param  $size  Requested image size
  * @return $image Featured image URL
  */
-function om_get_featured_image( $size = 'large' ) {
+function om_get_featured_image( $post, $size = 'large' ) {
 
   if ( has_post_thumbnail() ) {
 
@@ -24,7 +24,7 @@ function om_get_featured_image( $size = 'large' ) {
       'post_parent' => $post->ID,
     ) );
 
-    $attachments = array_keys( $attachments );
+    $attachments = get_posts( $attachments );
     $attached_image = wp_get_attachment_image_src( $attachments[0], $size );
     $image = $attached_image[0];
 
@@ -34,7 +34,7 @@ function om_get_featured_image( $size = 'large' ) {
       $content = get_the_content( $post );
       preg_match( '/<img.+src=[\'"](?P<src>.+)[\'"].*>/i', $content, $img_element );
 
-      $image = $img_element['src'];
+      $image = $img_element;
 
     }
 

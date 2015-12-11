@@ -10,7 +10,7 @@
 
   get_header();
 
-  $featured_image = om_get_featured_image( 'full' );
+  $featured_image = om_get_featured_image( $post, 'full' );
 
 ?>
 <main class="main" id="main" role="main">
