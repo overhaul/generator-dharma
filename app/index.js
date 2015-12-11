@@ -106,7 +106,6 @@ var DharmaGenerator = yeoman.generators.Base.extend({
 
   app: function() {
 
-    this.mkdir('content');
     this.mkdir('wp-content/themes');
     // get this folder name from a user prompt
     this.mkdir('wp-content/themes/' + this.themeSlug);
