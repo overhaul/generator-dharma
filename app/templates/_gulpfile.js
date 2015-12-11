@@ -10,7 +10,7 @@ var reload = browserSync.reload;
 
 
 // FILE PATHS =========================================================
-var theme = 'wp-content/themes/<%= themeSlug %>';
+var theme = '<%= themeSlug %>';
 var source = {
 
   styles : theme + '/source/styles/**/*.scss',

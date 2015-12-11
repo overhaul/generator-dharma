@@ -1,3 +1,3 @@
 {
-  "directory": "wp-content/themes/<%= _.slugify(themeSlug) %>/source/vendor"
+  "directory": "<%= _.slugify(themeSlug) %>/source/vendor"
 }
