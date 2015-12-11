@@ -32,8 +32,10 @@ if ( ! function_exists( 'theme_scripts_and_styles' ) ) {
 
     if ( ! is_admin() ) {
 
+      $css_modified_time = filemtime(get_template_directory() . '/assets/styles/style.css');
+
       // register stylesheets
-      wp_register_style( 'theme-css', get_template_directory_uri() . '/assets/styles/style.css' );
+      wp_register_style( 'theme-css', get_template_directory_uri() . '/assets/styles/style.css?' . $css_modified_time);
 
       // IE-only stylesheet
       wp_register_style( 'om-ie-only', get_template_directory_uri() . '/assets/style/ie.css', array(), '' );
