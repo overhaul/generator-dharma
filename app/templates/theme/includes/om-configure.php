@@ -474,7 +474,7 @@ if ( ! function_exists( 'om_yoast_seo_metabox_priority' ) ) {
  */
 if ( ! function_exists( 'om_clean_shortcodes' ) ) {
 
-  function om_clean_shortcodes() {
+  function om_clean_shortcodes($content) {
 
     $array = array(
       '<p>[' => '[',
@@ -492,7 +492,7 @@ if ( ! function_exists( 'om_clean_shortcodes' ) ) {
 
 if ( ! function_exists( 'om_fix_paragraph_nesting' ) ) {
 
-  function om_fix_paragraph_nesting() {
+  function om_fix_paragraph_nesting($content) {
 
     return str_replace( array( '<div></p>', '<p></div>' ), array( '<div>', '</div>' ), $content );
 
