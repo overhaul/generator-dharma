@@ -16,7 +16,7 @@ add_filter( 'login_headertitle', 'om_login_logotitle' );
 
 if ( ! function_exists( 'om_login_styles' ) ) {
 
-  function om_login_logo() {
+  function om_login_styles() {
 
     wp_register_style( 'login-css', get_template_directory_uri() . '/assets/styles/login-style.css' );
     wp_enqueue_style( 'login-css' );
