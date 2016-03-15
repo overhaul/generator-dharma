@@ -32,15 +32,18 @@ if ( ! function_exists( 'theme_scripts_and_styles' ) ) {
 
     if ( ! is_admin() ) {
 
+      $css_modified_time = filemtime(get_template_directory() . '/assets/styles/style.css');
+      $js_modified_time = filemtime(get_template_directory() . '/assets/scripts/main.js');
+
       // register stylesheets
-      wp_register_style( 'theme-css', get_template_directory_uri() . '/assets/styles/style.css' );
+      wp_register_style( 'theme-css', get_template_directory_uri() . '/assets/styles/style.css?' . $css_modified_time);
 
       // IE-only stylesheet
       wp_register_style( 'om-ie-only', get_template_directory_uri() . '/assets/style/ie.css', array(), '' );
 
       // load scripts in the footer
       wp_register_script( 'theme-plugins', get_template_directory_uri() . '/assets/scripts/plugins.js', array( 'jquery' ), '', true );
-      wp_register_script( 'theme-js', get_template_directory_uri() . '/assets/scripts/main.js', array( 'jquery' ), '', true );
+      wp_register_script( 'theme-js', get_template_directory_uri() . '/assets/scripts/main.js?' . $js_modified_time, array( 'jquery' ), '', true );
 
       // enqueue styles and scripts
       wp_enqueue_style( 'theme-css' );

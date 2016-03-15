@@ -9,8 +9,22 @@ var pagespeed = require('psi');
 var reload = browserSync.reload;
 
 
+
+//SFTP SETTINGS =======================================================
+var auto_upload = false;
+
+//DON'T STORE CREDENTIALS ON PUBLIC REPOS!
+var sftp = {
+  host: 'sftp.flywheelsites.com',
+  user: '',
+  pass: '',
+  server_path: ''
+};
+
+
+
 // FILE PATHS =========================================================
-var theme = 'wp-content/themes/<%= themeSlug %>';
+var theme = '<%= themeSlug %>';
 var source = {
 
   styles : theme + '/source/styles/**/*.scss',
@@ -70,6 +84,13 @@ gulp.task('styles', function () {
       browsers: AUTOPREFIXER_BROWSERS
     }))
     .pipe($.csso())
+    .pipe($.if(auto_upload, $.sftp({
+            host: sftp.host,
+            user: sftp.user,
+            pass: sftp.pass,
+            remotePath: sftp.server_path + assets.styles
+        })
+    ))
     .pipe(gulp.dest(assets.styles))
     .pipe($.size({title: 'styles'}));
 

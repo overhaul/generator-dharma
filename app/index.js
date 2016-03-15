@@ -43,48 +43,7 @@ var DharmaGenerator = yeoman.generators.Base.extend({
         name: 'themeSlug',
         message: 'What is the folder name?',
         default: 'my-theme'
-      },
-      {
-        name: 'dbPrefix',
-        message: 'What is your database table prefix?',
-        default: 'om_'
-      },
-      {
-        name: 'dbName',
-        message: 'Database name',
-        default: 'om_content'
-      },
-      {
-        name: 'dbUser',
-        message: 'Database user',
-        default: 'root'
-      },
-      {
-        name: 'dbPass',
-        message: 'Database password',
-        default: 'alpine'
-      },
-      {
-        name: 'dbHost',
-        message: 'Database host',
-        type: 'list',
-        choices: [
-          {
-            name: 'Environment variable',
-            value: '$_ENV{DATABASE_SERVER}'
-          },
-          {
-            name: 'Local host',
-            value: '"localhost"'
-          }
-        ],
-        default: '$_ENV{DATABASE_SERVER}'
-      },
-      {
-        name: 'wpDirectory',
-        message: 'What folder should WordPress live in?',
-        default: 'wp'
-      },
+      }
     ];
 
     this.prompt(prompts, function(props) {
@@ -92,12 +51,7 @@ var DharmaGenerator = yeoman.generators.Base.extend({
       this.siteName = props.siteName;
       this.themeSlug = props.themeSlug;
       this.wpDirectory = props.wpDirectory;
-      this.themeDir = 'wp-content/themes/' + this.themeSlug;
-      this.dbPrefix = props.dbPrefix;
-      this.dbName = props.dbName;
-      this.dbUser = props.dbUser;
-      this.dbPass = props.dbPass;
-      this.dbHost = props.dbHost;
+      this.themeDir = this.themeSlug;
       done();
 
     }.bind(this));
@@ -106,20 +60,8 @@ var DharmaGenerator = yeoman.generators.Base.extend({
 
   app: function() {
 
-    this.mkdir('wp-content/themes');
     // get this folder name from a user prompt
-    this.mkdir('wp-content/themes/' + this.themeSlug);
-    this.mkdir('wp-content/mu-plugins');
-    this.mkdir('shared/content/uploads');
-    this.template(
-      '_index.php',
-      'index.php');
-    this.template(
-      '_local-config.php',
-      'local-config-sample.php');
-    this.template(
-      '_wp-config.php',
-      'wp-config.php');
+    this.mkdir(this.themeSlug);
 
   },
 
@@ -165,18 +107,6 @@ var DharmaGenerator = yeoman.generators.Base.extend({
     this.copy(
       'gitattributes',
       '.gitattributes');
-    this.template(
-      '_gitmodules',
-      '.gitmodules');
-    this.copy(
-      'htaccess',
-      '.htaccess');
-    this.copy(
-      'humans.txt',
-      'humans.txt');
-    this.copy(
-      'robots.txt',
-      'robots.txt');
 
     this.log(chalk.blue('...done!'));
 
@@ -256,19 +186,7 @@ var DharmaGenerator = yeoman.generators.Base.extend({
 
   imagefiles: function() {
 
-    this.log(chalk.blue('Creating site icon images...'));
-
-    this.copy('android-chrome-192.png', 'android-chrome-192.png');
-    this.copy('manifest.json', 'manifest.json');
-    this.copy('apple-touch-icon-precomposed.png', 'apple-touch-icon-precomposed.png');
-    this.copy('apple-touch-icon.png', 'apple-touch-icon.png');
-    this.copy('favicon-16.png', 'favicon-16.png');
-    this.copy('favicon-32.png', 'favicon-32.png');
-    this.copy('favicon-48.png', 'favicon-48.png');
-    this.copy('icon-1024.png', 'icon-1024.png');
-    this.copy('ms-tile-wide.png', 'ms-tile-wide.png');
-    this.copy('ms-tile.png', 'ms-tile.png');
-    this.copy('browserconfig.xml', 'browserconfig.xml');
+    this.log(chalk.blue('Creating site theme image...'));
     this.copy('theme/screenshot.png', this.themeDir + '/screenshot.png');
 
     this.log(chalk.blue('...done!'));
@@ -291,29 +209,6 @@ var DharmaGenerator = yeoman.generators.Base.extend({
       }
 
       done();
-
-    });
-
-    git.submoduleAdd('git://github.com/WordPress/WordPress.git', this._.slugify(this.wpDirectory), function(err) {
-
-      if ( err ) {
-
-        me.log(chalk.red(err));
-
-      }
-
-      git._baseDir = me._.slugify(me.wpDirectory);
-      git.checkoutLatestTag(function(err) {
-
-        if ( err ) {
-
-          me.log(chalk.red(err));
-
-        }
-
-        done();
-
-      });
 
     });
 
