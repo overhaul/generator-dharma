@@ -189,8 +189,8 @@ var DharmaGenerator = yeoman.generators.Base.extend({
     this.log(chalk.blue('Creating initial js files...'));
 
     // this.template(
-    //   'theme/source/scripts/',
-    //   this.themeDir + '/source/scripts/');
+    //   'theme/source/styles/_style.scss',
+    //   this.themeDir + '/source/styles/style.scss');
     this.copy(
       'theme/source/scripts/',
       this.themeDir + '/source/scripts/');
