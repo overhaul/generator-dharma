@@ -17,7 +17,7 @@ require_once( get_template_directory() . '/includes/om-functions.php' );
  * Custom Theme functions
  */
 // Require plugins
-require_once( get_template_directory() . '/includes/theme-require-plugins.php' );
+// require_once( get_template_directory() . '/includes/theme-require-plugins.php' );
 
 
 // Custom functions & theme options
