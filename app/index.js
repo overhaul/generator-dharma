@@ -152,6 +152,10 @@ var DharmaGenerator = yeoman.generators.Base.extend({
     this.directory(
       'theme/includes/',
       this.themeDir + '/includes/');
+    //vendor files
+    this.directory(
+      'theme/source/vendor/fitvids/',
+      this.themeDir + '/source/vendor/fitvids/');
 
     this.log(chalk.blue('...done!'));
 
@@ -180,22 +184,7 @@ var DharmaGenerator = yeoman.generators.Base.extend({
       'theme/source/styles/partials/',
       this.themeDir + '/source/styles/partials/');
 
-    this.log(chalk.blue('...done!'));
-
-  },
-
-  scriptfiles: function() {
-
-    this.log(chalk.blue('Creating initial js files...'));
-
-    // this.template(
-    //   'theme/source/styles/_style.scss',
-    //   this.themeDir + '/source/styles/style.scss');
-    this.copy(
-      'theme/source/scripts/',
-      this.themeDir + '/source/scripts/');
-
-    this.log(chalk.blue('...done!'));
+    this.log(chalk.blue('...done!!1!11!1!'));
 
   },
 
