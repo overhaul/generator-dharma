@@ -43,32 +43,39 @@ function om_register_required_plugins() {
   $plugins = array(
 
     array(
-      'name'             => 'Advanced Custom Fields',
-      'slug'             => 'advanced-custom-fields',
+      'name'             => 'TinyMCE Advanced',
+      'slug'             => 'tinymce-advanced',
       'required'         => true,
       'force_activation' => true,
     ),
+    
+    // array(
+    //   'name'             => 'Advanced Custom Fields',
+    //   'slug'             => 'advanced-custom-fields',
+    //   'required'         => true,
+    //   'force_activation' => true,
+    // ),
 
-    array(
-      'name'             => 'WordPress SEO by Yoast',
-      'slug'             => 'wordpress-seo',
-      'required'         => true,
-      'force_activation' => true,
-    ),
+    // array(
+    //   'name'             => 'WordPress SEO by Yoast',
+    //   'slug'             => 'wordpress-seo',
+    //   'required'         => true,
+    //   'force_activation' => true,
+    // ),
 
-    array(
-      'name'             => 'WP Remote',
-      'slug'             => 'wpremote',
-      'required'         => false,
-      'force_activation' => false,
-    ),
+    // array(
+    //   'name'             => 'WP Remote',
+    //   'slug'             => 'wpremote',
+    //   'required'         => false,
+    //   'force_activation' => false,
+    // ),
 
-    array(
-      'name'             => 'RICG Responsive Images',
-      'slug'             => 'ricg-responsive-images',
-      'required'         => true,
-      'force_activation' => true,
-    ),
+    // array(
+    //   'name'             => 'RICG Responsive Images',
+    //   'slug'             => 'ricg-responsive-images',
+    //   'required'         => true,
+    //   'force_activation' => true,
+    // ),
 
     /**
      * This is an example of how to include a plugin pre-packaged with
